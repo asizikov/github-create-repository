@@ -1,13 +1,14 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using Octokit;
+using Newtonsoft.Json;
 
 namespace GitHub.Automation.Configuration
 {
     public class ConfigurationProvider
     {
-        private const string owner = "owner";
-        private const string repo = "repo";
+        private const string owner = "#";
+        private const string repo = "github-create-repository-configuration";
 
         public async Task<NewRepositoryConfiguration> GetConfigurationAsync(IGitHubClient client)
         {
@@ -16,9 +17,9 @@ namespace GitHub.Automation.Configuration
                     client.Repository.Content.GetAllContents(owner, repo, "configuration/configuration.json")
                         .ConfigureAwait(false);
             var configurationString = contents.First().Content;
-            //deserialize
+            var result = JsonConvert.DeserializeObject<NewRepositoryConfiguration>(configurationString);
 
-            return null;
+            return result;
         }
     }
 }
