@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71678F93-FFE3-4E1A-B9A5-91E3AD1F20A9}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{CF5DB524-F204-434C-BEB6-B7BA3C665875}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GitHub.Automation.Console</RootNamespace>
-    <AssemblyName>GitHub.Automation.Console</AssemblyName>
+    <RootNamespace>GitHub.Automation.Repository</RootNamespace>
+    <AssemblyName>GitHub.Automation.Repository</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -46,22 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CreateNewRepositoryTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GitHub.Automation.Configuration\GitHub.Automation.Configuration.csproj">
       <Project>{5e28ddd4-4b83-41fa-b17c-9c87b652f13e}</Project>
       <Name>GitHub.Automation.Configuration</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GitHub.Automation.Repository\GitHub.Automation.Repository.csproj">
-      <Project>{cf5db524-f204-434c-beb6-b7ba3c665875}</Project>
-      <Name>GitHub.Automation.Repository</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
