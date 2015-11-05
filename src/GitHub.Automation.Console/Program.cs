@@ -17,10 +17,13 @@ namespace GitHub.Automation.Console
 
         public static async Task TestAsync()
         {
+            var owner = "#";
             var client = new GitHubClient(new ProductHeaderValue("tool"));
-            client.Credentials = new Credentials("#", "#");
-            var configuration = new ConfigurationProvider();
+            client.Credentials = new Credentials(owner, "#");
+            var configuration = new ConfigurationProvider(owner, "github-create-repository-configuration");
             var config = await configuration.GetConfigurationAsync(client);
+            System.Console.WriteLine(config.version);
+            System.Console.ReadLine();
         }
     }
 }

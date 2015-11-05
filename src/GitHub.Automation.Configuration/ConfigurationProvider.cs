@@ -7,14 +7,20 @@ namespace GitHub.Automation.Configuration
 {
     public class ConfigurationProvider
     {
-        private const string owner = "#";
-        private const string repo = "github-create-repository-configuration";
+
+        private string Owner {get; }
+        private string Repository { get; }
+        public ConfigurationProvider(string owner, string repository)
+        {
+            Owner = owner;
+            Repository = repository;
+        }
 
         public async Task<NewRepositoryConfiguration> GetConfigurationAsync(IGitHubClient client)
         {
             var contents =
                 await
-                    client.Repository.Content.GetAllContents(owner, repo, "configuration/configuration.json")
+                    client.Repository.Content.GetAllContents(Owner, Repository, "configuration/configuration.json")
                         .ConfigureAwait(false);
             var configurationString = contents.First().Content;
             var result = JsonConvert.DeserializeObject<NewRepositoryConfiguration>(configurationString);
