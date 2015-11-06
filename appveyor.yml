@@ -12,3 +12,11 @@ before_build:
 - ps: gitversion /l console /output buildserver /updateassemblyinfo AssemblyInfo.cs /b (get-item env:APPVEYOR_REPO_BRANCH).Value
 build:
   verbosity: minimal
+
+artifacts:
+  - path: sources/**/bin/*.nupkg
+
+deploy:
+  api_key: 
+   secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
+  artifact: /.*\.nupkg/
