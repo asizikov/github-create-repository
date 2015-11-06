@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GitHub.Automation.Configuration;
 using Octokit;
-using Branch = Octokit.Branch;
 
 namespace GitHub.Automation.Repository
 {
@@ -45,15 +43,15 @@ namespace GitHub.Automation.Repository
                         Client.GitDatabase.Reference.Get(repository.Owner.Login, repository.Name, "heads/master")
                             .ConfigureAwait(false);
 
-                var reference = new NewReference($"refs/heads/{branch.name}", master.Object.Sha);
+                var reference = new NewReference($"refs/heads/{branch.Name}", master.Object.Sha);
                 var createdReference = await
                     Client.GitDatabase.Reference.Create(repository.Owner.Login, repository.Name, reference)
                         .ConfigureAwait(false);
-                if (branch.@default)
+                if (branch.IsDefault)
                 {
                     var repositoryUpdate = new RepositoryUpdate();
                     repositoryUpdate.Name = repository.Name;
-                    repositoryUpdate.DefaultBranch = branch.name;
+                    repositoryUpdate.DefaultBranch = branch.Name;
                     await Client.Repository.Edit(repository.Owner.Login, repository.Name, repositoryUpdate).ConfigureAwait(false);
                 }
             }
