@@ -4,9 +4,9 @@ namespace GitHub.Automation.Configuration
 {
     public class Branch
     {
-        public string name { get; set; }
-        public bool @default { get; set; }
-        public bool @protected { get; set; }
+        public string Name { get; set; }
+        public bool IsDefault { get; set; }
+        public bool IsProtected { get; set; }
     }
 
     public class Label
