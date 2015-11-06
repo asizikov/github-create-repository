@@ -1,17 +1,13 @@
-﻿using GitHub.Automation.Configuration;
+﻿using System.Threading.Tasks;
+using GitHub.Automation.Configuration;
 using GitHub.Automation.Repository;
 using Octokit;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GitHub.Automation.Console
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             Task.Run(() => TestAsync()).Wait();
         }
@@ -27,7 +23,7 @@ namespace GitHub.Automation.Console
             System.Console.WriteLine(config.version);
 
             var task = new CreateNewRepositoryTask(client, config);
-            var repository  = await task.CreateAsync("hello-new-repo");
+            var repository = await task.CreateAsync("hello-new-repo", owner);
             System.Console.WriteLine("Browse the repository at: " + repository);
             System.Console.ReadLine();
         }
