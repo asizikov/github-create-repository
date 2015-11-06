@@ -10,8 +10,13 @@ configuration: Release
 before_build:
 - cmd: nuget restore src\GitHub.Automation.sln
 - ps: gitversion /l console /output buildserver /updateassemblyinfo AssemblyInfo.cs /b (get-item env:APPVEYOR_REPO_BRANCH).Value
+
+nuget:
+  disable_publish_on_pr: true
+
 build:
   verbosity: minimal
+  publish_nuget: true
 
 artifacts:
   - path: sources/**/bin/*.nupkg
