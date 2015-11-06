@@ -1,5 +1,14 @@
-version: 0.1.{build}
+cache:
+  - packages -> **\packages.config
+  - C:\ProgramData\chocolatey\bin -> appveyor.yml
+  - C:\ProgramData\chocolatey\lib -> appveyor.yml
+
+install:
+  - choco install gitversion.portable -y
+
+configuration: Release
 before_build:
 - cmd: nuget restore src\GitHub.Automation.sln
+- ps: gitversion /l console /output buildserver /updateassemblyinfo AssemblyInfo.cs /b (get-item env:APPVEYOR_REPO_BRANCH).Value
 build:
   verbosity: minimal
