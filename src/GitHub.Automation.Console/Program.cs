@@ -23,7 +23,7 @@ namespace GitHub.Automation.Console
             System.Console.WriteLine(config.version);
 
             var task = new CreateNewRepositoryTask(client, config);
-            var repository = await task.CreateAsync("hello-new-repo", owner);
+            var repository = await task.CreateAsync("hello-new-repo");
             System.Console.WriteLine("Browse the repository at: " + repository);
             System.Console.ReadLine();
         }
