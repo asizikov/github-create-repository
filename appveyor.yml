@@ -21,8 +21,16 @@ build:
 artifacts:
   - path: sources/**/bin/*.nupkg
 
-deploy:
-  provider: NuGet
-  api_key: 
-   secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
-  artifact: /.*\.nupkg/
+branches:
+  only:
+    - master
+    - develop
+
+  configuration: Release
+  deploy:
+    provider: NuGet
+    api_key: 
+     secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
+    artifact: /.*\.nupkg/
+
+    configuration: Debug
