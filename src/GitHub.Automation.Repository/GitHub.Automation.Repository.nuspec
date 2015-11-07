@@ -4,9 +4,9 @@
     <id>$id$</id>
     <version>$version$</version>
     <title>$title$</title>
-    <authors>$author$</authors>
-    <owners>$author$</owners>
+    <authors>Anton Sizikov</authors>
+    <owners>Anton.Sizikov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>$description$</description>
+    <description>Create GitHub repository</description>
   </metadata>
 </package>
