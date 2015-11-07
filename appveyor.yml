@@ -1,8 +1,3 @@
-branches:
-  only:
-    - master
-    - develop
-
 configuration: Release
 cache:
   - packages -> **\packages.config
@@ -31,16 +26,8 @@ deploy:
   api_key: 
     secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
   artifact: /.*\.nupkg/
-
-#Debug configuration
-configuration: Debug
-before_build:
-- cmd: nuget restore src\GitHub.Automation.sln
-- ps: gitversion /l console /output buildserver /updateassemblyinfo AssemblyInfo.cs /b (get-item env:APPVEYOR_REPO_BRANCH).Value
-
-nuget:
-  disable_publish_on_pr: true
-
-build:
-  verbosity: minimal
-  publish_nuget: false
+  on:
+    branches:
+      only:
+        - master
+        - develop
