@@ -54,10 +54,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GitHub.Automation.Configuration\GitHub.Automation.Configuration.csproj">
-      <Project>{5e28ddd4-4b83-41fa-b17c-9c87b652f13e}</Project>
-      <Name>GitHub.Automation.Configuration</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GitHub.Automation.Repository\GitHub.Automation.Repository.csproj">
       <Project>{cf5db524-f204-434c-beb6-b7ba3c665875}</Project>
       <Name>GitHub.Automation.Repository</Name>
