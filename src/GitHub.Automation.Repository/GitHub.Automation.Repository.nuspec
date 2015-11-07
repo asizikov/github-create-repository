@@ -8,5 +8,7 @@
     <owners>Anton.Sizikov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Create GitHub repository</description>
+    <projectUrl>https://github.com/asizikov/github-create-repository</projectUrl>
+    <licenseUrl>htps://github.com/asizikov/github-create-repository/blob/73193a73b76a4b51d627c1c06bec0fa6da0b0369/LICENSE</licenseUrl>
   </metadata>
 </package>
