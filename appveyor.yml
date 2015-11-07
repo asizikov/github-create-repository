@@ -11,19 +11,16 @@ branches:
     - master
     - develop
 
-  configuration: Release
-  deploy:
-    provider: NuGet
-    api_key: 
-     secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
-    artifact: /.*\.nupkg/
-
-  configuration: Debug
-
 configuration: Release
+deploy:
+  provider: NuGet
+  api_key: 
+    secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
+  artifact: /.*\.nupkg/
+
 before_build:
-- cmd: nuget restore src\GitHub.Automation.sln
-- ps: gitversion /l console /output buildserver /updateassemblyinfo AssemblyInfo.cs /b (get-item env:APPVEYOR_REPO_BRANCH).Value
+ - cmd: nuget restore src\GitHub.Automation.sln
+ - ps: gitversion /l console /output buildserver /updateassemblyinfo AssemblyInfo.cs /b (get-item env:APPVEYOR_REPO_BRANCH).Value
 
 nuget:
   disable_publish_on_pr: true
