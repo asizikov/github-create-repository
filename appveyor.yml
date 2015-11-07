@@ -1,3 +1,9 @@
+branches:
+  only:
+    - master
+    - develop
+
+configuration: Release
 cache:
   - packages -> **\packages.config
   - C:\ProgramData\chocolatey\bin -> appveyor.yml
@@ -5,18 +11,6 @@ cache:
 
 install:
   - choco install gitversion.portable -y
-
-branches:
-  only:
-    - master
-    - develop
-
-configuration: Release
-deploy:
-  provider: NuGet
-  api_key: 
-    secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
-  artifact: /.*\.nupkg/
 
 before_build:
  - cmd: nuget restore src\GitHub.Automation.sln
@@ -32,6 +26,13 @@ build:
 artifacts:
   - path: sources/**/bin/*.nupkg
 
+deploy:
+  provider: NuGet
+  api_key: 
+    secure: XhbYqp6VuFenB1QdqeTzgfAqt7PCyT3xRIr/8XFPZPEGTseGP1yiLAO3MMw6dQFQ
+  artifact: /.*\.nupkg/
+
+#Debug configuration
 configuration: Debug
 before_build:
 - cmd: nuget restore src\GitHub.Automation.sln
@@ -43,6 +44,3 @@ nuget:
 build:
   verbosity: minimal
   publish_nuget: false
-
-artifacts:
-  - path: sources/**/bin/*.nupkg
