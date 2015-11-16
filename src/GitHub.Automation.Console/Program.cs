@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
-using GitHub.Automation.Configuration;
 using GitHub.Automation.Repository;
+using GitHub.Automation.Repository.Configuration;
 using Octokit;
 
 namespace GitHub.Automation.Console
@@ -19,11 +19,11 @@ namespace GitHub.Automation.Console
             var client = new GitHubClient(new ProductHeaderValue("tool"));
             client.Credentials = new Credentials(owner, password);
             var configuration = new ConfigurationProvider(owner, "github-create-repository-configuration");
-            var config = await configuration.GetConfigurationAsync(client);
-            System.Console.WriteLine(config.version);
+            var config = await configuration.GetConfigurationAsync(client).ConfigureAwait(false);
+            System.Console.WriteLine(config.Version);
 
             var task = new CreateNewRepositoryTask(client, config);
-            var repository = await task.CreateAsync("hello-new-repo");
+            var repository = await task.CreateAsync("hello-new-repo").ConfigureAwait(false);
             System.Console.WriteLine("Browse the repository at: " + repository);
             System.Console.ReadLine();
         }
