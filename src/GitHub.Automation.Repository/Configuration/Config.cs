@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GitHub.Automation.Configuration
+namespace GitHub.Automation.Repository.Configuration
 {
     public class Branch
     {
@@ -11,19 +11,22 @@ namespace GitHub.Automation.Configuration
 
     public class Label
     {
-        public string name { get; set; }
-        public string color { get; set; }
+        public string Name { get; set; }
+        public string Color { get; set; }
     }
 
     public class Config
     {
-        public List<Branch> branches { get; set; }
-        public List<Label> labels { get; set; }
+        public bool IsPrivate { get; set; }
+        public string GitIgnoreTemplate { get; set; }
+        public List<Branch> Branches { get; set; }
+        public List<Label> Labels { get; set; }
+        public string Organization { get; set; }
     }
 
     public class NewRepositoryConfiguration
     {
-        public double version { get; set; }
-        public Config repository { get; set; }
+        public string Version { get; set; }
+        public Config Repository { get; set; }
     }
 }
