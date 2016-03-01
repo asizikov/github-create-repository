@@ -49,12 +49,12 @@ namespace GitHub.Automation.Repository
             {
                 var master =
                     await
-                        Client.GitDatabase.Reference.Get(repository.Owner.Login, repository.Name, "heads/master")
+                        Client.Git.Reference.Get(repository.Owner.Login, repository.Name, "heads/master")
                             .ConfigureAwait(false);
 
                 var reference = new NewReference($"refs/heads/{branch.Name}", master.Object.Sha);
                 await
-                    Client.GitDatabase.Reference.Create(repository.Owner.Login, repository.Name, reference)
+                    Client.Git.Reference.Create(repository.Owner.Login, repository.Name, reference)
                         .ConfigureAwait(false);
                 if (branch.IsDefault)
                 {
